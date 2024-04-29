@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salesforce Business Analyst Certification Quiz</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .quiz-header {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+
+        .signature {
+      font-family: 'Courier New', monospace; 
+      font-size: 16px; 
+      padding: 20px;
+      border: 2px solid #ffffff; 
+      border-radius: 5px;
+      width: fit-content;
+      max-width: 300px; 
+      text-align: left; 
+      overflow: hidden; 
+    }
+
+    .signature code {
+      display: block;
+      white-space: pre;
+    }
+
+    .signature code::after {
+      content: "|"; 
+      animation: blink 1s linear infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .Ruth {
+      font-family: 'Courier New', monospace; 
+      font-size: 16px; 
+      padding: 20px;
+      border: 2px solid #ffffff; 
+      border-radius: 5px;
+      width: fit-content;
+      max-width: 300px; 
+      text-align: left; 
+      overflow: hidden; 
+    }
+
+    .Ruth code {
+      display: block;
+      white-space: pre;
+    }
+
+    .Ruth code::after {
+      content: "|"; 
+      animation: blink 1s linear infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .button-click {
+      background-color: #00A1E0;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 18px;
+      margin-bottom: 20px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .button-click:hover {
+      background-color: #007399;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .dropdown {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+
+    .check-button {
+      background-color: #00A1E0;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+    }
+
+    .check-button:hover {
+      background-color: #007399;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .progress-container {
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #00A1E0;
+      transition: width 0.5s ease;
+    }
+
+    .timer {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .timer-label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+    }
+
+    .category-scores {
+      margin-top: 20px;
+    }
+
+    .category-score {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    #inspiration-message {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 16px; 
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff; 
+  border: 2px solid #d8dadc; 
+  position: relative;
+  width: fit-content;
+  max-width: 900px; 
+}
+
+#inspiration-message::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  border-width: 20px;
+  border-style: solid;
+  border-color: #96989a transparent transparent transparent;
+  transform: translateX(-50%); 
+}
+body.queen-mode, .check-button.queen-mode {
+  transition: background-color 0.3s ease;
+}
+
+body.queen-mode:hover, .check-button.queen-mode:hover {
+  background-color: purple;
+}
+
+.check-button {
+  background-color: #00A1E0; 
+}
+
+.check-button.queen-mode {
+  background-color: pink; 
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <center> <div id="inspiration-message"></div>
+      <br>
+ <img src="https:miro.medium.com/v2/resize:fit:2400/2*7Zy4dOimRzH5ytz524s2mQ.png" id="ruth" alt="ruthimg" height=90px Width150px></center>
+    <h1 class="quiz-header">Salesforce Business Analyst Certification Quiz</h1>
+    <div id="quizContainer" style="display:none;">
+      <div class="timer" id="timer"></div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar" style="width: 0;"></div>
+      </div>
+      <div class="question" id="question"></div>
+      <select class="dropdown"></select>
+      <button class="check-button" onclick="checkAnswer()">Next Question</button>
+      <button class="check-button" onclick=" displayInspiration()">Get Inspiration From Ruth</button>
+      <button class="check-button" id="celebrate" onclick=" celebrate()">Toggle Queen Mode</button>
+
+      <div class="result" id="result"></div>
+    </div>
+    <button class="button-click" onclick="initialize_generate()">Start Quiz</button>
+<h3>Helpful links</h3>
+<ul>➡️ Trailhead</ul>
+<ul>➡️Trailhead</ul>
+<ul>Trailhead</ul>
+<ul>Trailhead</ul>
+
+    <div class="signature">
+      <code id="typed-text"></code>
+    </div>
+    <button class="button-click" style="display:none;" onclick="restartQuiz()">Restart Quiz</button>
+    <div class="category-scores" id="categoryScores"></div>
+  </div>
+
+  <script>
+  
+  const text = "Made by Sir12Gage <3";
+const typedTextElement = document.getElementById('typed-text');
+
+let index = 0;
+
+function type() {
+  if (index < text.length) {
+    typedTextElement.textContent += text.charAt(index);
+    index++;
+    setTimeout(type, 100); 
+  }
+}
+
+type();
+
+    var quizData = [
+      {
+        question: "What is the purpose of a validation rule in Salesforce?",
+        options: [
+          { text: "To ensure data integrity by validating user input", tag: "Requirements" },
+          { text: "To provide training materials for new users", tag: "Collaboration with Stakeholders" },
+          { text: "To manage user access permissions", tag: "User Acceptance" }
+        ],
+        correctAnswer: "To ensure data integrity by validating user input",
+        tag: "Requirements"
+      },
+      {
+        question: "What are record types used for in Salesforce?",
+        options: [
+          { text: "To offer different business processes, picklist values, and page layouts to different users", tag: "Requirements" },
+          { text: "To manage user profiles", tag: "Requirements" },
+          { text: "To track customer interactions", tag: "Requirements" }
+        ],
+        correctAnswer: "To offer different business processes, picklist values, and page layouts to different users",
+        tag: "Requirements"
+      },
+      {
+    question: "What is the purpose of 'Flow' in Salesforce?",
+    options: [
+      { text: "To automate business processes with point-and-click functionality", tag: "Requirements" },
+      { text: "To design custom user interfaces for Salesforce applications", tag: "Requirements" },
+      { text: "To manage user permissions and access controls", tag: "Requirements" }
+    ],
+    correctAnswer: "To automate business processes with point-and-click functionality",
+    tag: "Requirements"
+  },
+  {
+    question: "What is the difference between a lead and an opportunity in Salesforce?",
+    options: [
+      { text: "A lead represents a potential customer, while an opportunity represents a potential sale", tag: "Requirements" },
+      { text: "A lead is a qualified prospect, while an opportunity is an existing customer", tag: "Customer Management" },
+      { text: "A lead is a contact person, while an opportunity is a company or organization", tag: "Requirements" }
+    ],
+    correctAnswer: "A lead represents a potential customer, while an opportunity represents a potential sale",
+    tag: "Requirements"
+  },
+  {
+    question: "What is a validation rule in Salesforce used for?",
+    options: [
+      { text: "To enforce data quality by validating user input", tag: "User Acceptance" },
+      { text: "To assign tasks to users based on predefined criteria", tag: "Task Management" },
+      { text: "To track changes made to records in the system", tag: "Audit Trail" }
+    ],
+    correctAnswer: "To enforce data quality by validating user input",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a dashboard in Salesforce?",
+    options: [
+      { text: "A visual representation of key metrics and performance indicators", tag: "User Acceptance" },
+      { text: "A tool for managing user profiles and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A visual representation of key metrics and performance indicators",
+    tag: "User Acceptance"
+  },
+  {
+    question: "How can a Business Analyst collaborate with stakeholders during a Salesforce implementation project?",
+    options: [
+      { text: "By conducting workshops and gathering requirements", tag: "Requirements" },
+      { text: "By writing code to customize Salesforce solutions", tag: "Requirements" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By conducting workshops and gathering requirements",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a data migration plan in Salesforce?",
+    options: [
+      { text: "To ensure smooth transition of data from legacy systems to Salesforce", tag: "User Acceptance" },
+      { text: "To design custom reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "To automate repetitive tasks using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To ensure smooth transition of data from legacy systems to Salesforce",
+    tag: "User Acceptance"
+  },
+  {
+    question: "How does Salesforce ensure data security and privacy?",
+    options: [
+      { text: "By implementing role-based access controls and data encryption", tag: "Requirements" },
+      { text: "By providing unlimited storage and backup options", tag: "Requirements" },
+      { text: "By offering real-time collaboration features and social integrations", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By implementing role-based access controls and data encryption",
+    tag: "Requirements"
+  },
+  {
+    question: "What is a Chatter group in Salesforce used for?",
+    options: [
+      { text: "To collaborate and communicate with colleagues in real-time", tag: "Collaboration with Stakeholders" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To collaborate and communicate with colleagues in real-time",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of the Salesforce AppExchange?",
+    options: [
+      { text: "To browse and install third-party apps and integrations for Salesforce", tag: "Collaboration with Stakeholders" },
+      { text: "To manage user permissions and access controls", tag: "Requirements" },
+      { text: "To design custom user interfaces for Salesforce applications", tag: "Requirements" }
+    ],
+    correctAnswer: "To browse and install third-party apps and integrations for Salesforce",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "How can a Business Analyst ensure data integrity in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a sandbox in Salesforce?",
+    options: [
+      { text: "A copy of a Salesforce organization used for testing and development purposes", tag: "Requirements" },
+      { text: "A secure environment for managing user access and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A copy of a Salesforce organization used for testing and development purposes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst optimize Salesforce reports for better performance?",
+    options: [
+      { text: "By filtering and summarizing data to reduce report complexity", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By filtering and summarizing data to reduce report complexity",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a change set in Salesforce?",
+    options: [
+      { text: "A collection of customizations that can be deployed from one organization to another", tag: "Collaboration with Stakeholders" },
+      { text: "A tool for managing user profiles and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A collection of customizations that can be deployed from one organization to another",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the role of a Business Analyst in user acceptance testing (UAT) for Salesforce?",
+    options: [
+      { text: "To validate that the Salesforce solution meets business requirements", tag: "User Acceptance" },
+      { text: "To develop custom code for Salesforce solutions", tag: "Requirements" },
+      { text: "To manage server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "To validate that the Salesforce solution meets business requirements",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the purpose of a workflow rule in Salesforce?",
+    options: [
+      { text: "To automate standard internal procedures and processes", tag: "Requirements" },
+      { text: "To define access permissions for different user roles", tag: "Requirements" },
+      { text: "To manage user profiles and permissions", tag: "Requirements" }
+    ],
+    correctAnswer: "To automate standard internal procedures and processes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure effective communication with project stakeholders?",
+    options: [
+      { text: "By organizing regular meetings and providing status updates", tag: "Collaboration with Stakeholders" },
+      { text: "By optimizing Salesforce reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By organizing regular meetings and providing status updates",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a dashboard component in Salesforce?",
+    options: [
+      { text: "To display specific metrics or data visualizations on a dashboard", tag: "User Acceptance" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To display specific metrics or data visualizations on a dashboard",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the role of a Business Analyst in defining Salesforce data model?",
+    options: [
+      { text: "To analyze business requirements and design a scalable data architecture", tag: "Requirements" },
+      { text: "To customize page layouts and user interface elements", tag: "Requirements" },
+      { text: "To automate business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To analyze business requirements and design a scalable data architecture",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst facilitate user training for Salesforce solutions?",
+    options: [
+      { text: "By developing comprehensive training materials and conducting workshops", tag: "Collaboration with Stakeholders" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By developing comprehensive training materials and conducting workshops",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is a formula field in Salesforce?",
+    options: [
+      { text: "A read-only field that displays the result of a formula expression", tag: "Requirements" },
+      { text: "A field used to store numeric data types such as integers and decimals", tag: "Data Types" },
+      { text: "A field used to categorize records and classify data in Salesforce", tag: "Data Classification" }
+    ],
+    correctAnswer: "A read-only field that displays the result of a formula expression",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure data quality in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the purpose of a junction object in Salesforce?",
+    options: [
+      { text: "To create many-to-many relationships between two objects", tag: "Requirements" },
+      { text: "To enforce data validation rules", tag: "User Acceptance" },
+      { text: "To define page layouts for mobile users", tag: "Requirements" }
+    ],
+    correctAnswer: "To create many-to-many relationships between two objects",
+    tag: "Requirements"
+  },
+  {
+    question: "What is the difference between a lead and an opportunity in Salesforce?",
+    options: [
+      { text: "A lead represents a potential customer, while an opportunity represents a potential sale", tag: "Requirements" },
+      { text: "A lead is a qualified prospect, while an opportunity is an existing customer", tag: "Customer Management" },
+      { text: "A lead is a contact person, while an opportunity is a company or organization", tag: "Requirements" }
+    ],
+    correctAnswer: "A lead represents a potential customer, while an opportunity represents a potential sale",
+    tag: "Requirements"
+  },
+  {
+    question: "What is a validation rule in Salesforce used for?",
+    options: [
+      { text: "To enforce data quality by validating user input", tag: "User Acceptance" },
+      { text: "To assign tasks to users based on predefined criteria", tag: "Task Management" },
+      { text: "To track changes made to records in the system", tag: "Audit Trail" }
+    ],
+    correctAnswer: "To enforce data quality by validating user input",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a dashboard in Salesforce?",
+    options: [
+      { text: "A visual representation of key metrics and performance indicators", tag: "User Acceptance" },
+      { text: "A tool for managing user profiles and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A visual representation of key metrics and performance indicators",
+    tag: "User Acceptance"
+  },
+  {
+    question: "How can a Business Analyst collaborate with stakeholders during a Salesforce implementation project?",
+    options: [
+      { text: "By conducting workshops and gathering requirements", tag: "Requirements" },
+      { text: "By writing code to customize Salesforce solutions", tag: "Requirements" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By conducting workshops and gathering requirements",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a data migration plan in Salesforce?",
+    options: [
+      { text: "To ensure smooth transition of data from legacy systems to Salesforce", tag: "User Acceptance" },
+      { text: "To design custom reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "To automate repetitive tasks using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To ensure smooth transition of data from legacy systems to Salesforce",
+    tag: "User Acceptance"
+  },
+  {
+    question: "How does Salesforce ensure data security and privacy?",
+    options: [
+      { text: "By implementing role-based access controls and data encryption", tag: "Requirements" },
+      { text: "By providing unlimited storage and backup options", tag: "Requirements" },
+      { text: "By offering real-time collaboration features and social integrations", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By implementing role-based access controls and data encryption",
+    tag: "Requirements"
+  },
+  {
+    question: "What is a Chatter group in Salesforce used for?",
+    options: [
+      { text: "To collaborate and communicate with colleagues in real-time", tag: "Collaboration with Stakeholders" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To collaborate and communicate with colleagues in real-time",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of the Salesforce AppExchange?",
+    options: [
+      { text: "To browse and install third-party apps and integrations for Salesforce", tag: "Collaboration with Stakeholders" },
+      { text: "To manage user permissions and access controls", tag: "Requirements" },
+      { text: "To design custom user interfaces for Salesforce applications", tag: "Requirements" }
+    ],
+    correctAnswer: "To browse and install third-party apps and integrations for Salesforce",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "How can a Business Analyst ensure data integrity in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a sandbox in Salesforce?",
+    options: [
+      { text: "A copy of a Salesforce organization used for testing and development purposes", tag: "Requirements" },
+      { text: "A secure environment for managing user access and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A copy of a Salesforce organization used for testing and development purposes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst optimize Salesforce reports for better performance?",
+    options: [
+      { text: "By filtering and summarizing data to reduce report complexity", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By filtering and summarizing data to reduce report complexity",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a change set in Salesforce?",
+    options: [
+      { text: "A collection of customizations that can be deployed from one organization to another", tag: "Collaboration with Stakeholders" },
+      { text: "A tool for managing user profiles and permissions", tag: "Requirements" },
+      { text: "A module for importing and exporting data from external systems", tag: "Requirements" }
+    ],
+    correctAnswer: "A collection of customizations that can be deployed from one organization to another",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the role of a Business Analyst in user acceptance testing (UAT) for Salesforce?",
+    options: [
+      { text: "To validate that the Salesforce solution meets business requirements", tag: "User Acceptance" },
+      { text: "To develop custom code for Salesforce solutions", tag: "Requirements" },
+      { text: "To manage server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "To validate that the Salesforce solution meets business requirements",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the purpose of a workflow rule in Salesforce?",
+    options: [
+      { text: "To automate standard internal procedures and processes", tag: "Requirements" },
+      { text: "To define access permissions for different user roles", tag: "Requirements" },
+      { text: "To manage user profiles and permissions", tag: "Requirements" }
+    ],
+    correctAnswer: "To automate standard internal procedures and processes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure effective communication with project stakeholders?",
+    options: [
+      { text: "By organizing regular meetings and providing status updates", tag: "Collaboration with Stakeholders" },
+      { text: "By optimizing Salesforce reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By organizing regular meetings and providing status updates",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a dashboard component in Salesforce?",
+    options: [
+      { text: "To display specific metrics or data visualizations on a dashboard", tag: "User Acceptance" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To display specific metrics or data visualizations on a dashboard",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the role of a Business Analyst in defining Salesforce data model?",
+    options: [
+      { text: "To analyze business requirements and design a scalable data architecture", tag: "Requirements" },
+      { text: "To customize page layouts and user interface elements", tag: "Requirements" },
+      { text: "To automate business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To analyze business requirements and design a scalable data architecture",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst facilitate user training for Salesforce solutions?",
+    options: [
+      { text: "By developing comprehensive training materials and conducting workshops", tag: "Collaboration with Stakeholders" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By developing comprehensive training materials and conducting workshops",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is a formula field in Salesforce?",
+    options: [
+      { text: "A read-only field that displays the result of a formula expression", tag: "Requirements" },
+      { text: "A field used to store numeric data types such as integers and decimals", tag: "Data Types" },
+      { text: "A field used to categorize records and classify data in Salesforce", tag: "Data Classification" }
+    ],
+    correctAnswer: "A read-only field that displays the result of a formula expression",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure data quality in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a junction object in Salesforce?",
+    options: [
+      { text: "To create many-to-many relationships between two objects", tag: "Requirements" },
+      { text: "To enforce data validation rules", tag: "User Acceptance" },
+      { text: "To define page layouts for mobile users", tag: "Requirements" }
+    ],
+    correctAnswer: "To create many-to-many relationships between two objects",
+    tag: "Requirements"
+  },
+  {
+    question: "What is the purpose of a workflow rule in Salesforce?",
+    options: [
+      { text: "To automate standard internal procedures and processes", tag: "Requirements" },
+      { text: "To define access permissions for different user roles", tag: "Requirements" },
+      { text: "To manage user profiles and permissions", tag: "Requirements" }
+    ],
+    correctAnswer: "To automate standard internal procedures and processes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure effective communication with project stakeholders?",
+    options: [
+      { text: "By organizing regular meetings and providing status updates", tag: "Collaboration with Stakeholders" },
+      { text: "By optimizing Salesforce reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By organizing regular meetings and providing status updates",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a dashboard component in Salesforce?",
+    options: [
+      { text: "To display specific metrics or data visualizations on a dashboard", tag: "User Acceptance" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To display specific metrics or data visualizations on a dashboard",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the role of a Business Analyst in defining Salesforce data model?",
+    options: [
+      { text: "To analyze business requirements and design a scalable data architecture", tag: "Requirements" },
+      { text: "To customize page layouts and user interface elements", tag: "Requirements" },
+      { text: "To automate business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To analyze business requirements and design a scalable data architecture",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst facilitate user training for Salesforce solutions?",
+    options: [
+      { text: "By developing comprehensive training materials and conducting workshops", tag: "Collaboration with Stakeholders" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By developing comprehensive training materials and conducting workshops",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is a formula field in Salesforce?",
+    options: [
+      { text: "A read-only field that displays the result of a formula expression", tag: "Requirements" },
+      { text: "A field used to store numeric data types such as integers and decimals", tag: "Data Types" },
+      { text: "A field used to categorize records and classify data in Salesforce", tag: "Data Classification" }
+    ],
+    correctAnswer: "A read-only field that displays the result of a formula expression",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure data quality in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a junction object in Salesforce?",
+    options: [
+      { text: "To create many-to-many relationships between two objects", tag: "Requirements" },
+      { text: "To enforce data validation rules", tag: "User Acceptance" },
+      { text: "To define page layouts for mobile users", tag: "Requirements" }
+    ],
+    correctAnswer: "To create many-to-many relationships between two objects",
+    tag: "Requirements"
+  },
+  {
+    question: "What is the purpose of a workflow rule in Salesforce?",
+    options: [
+      { text: "To automate standard internal procedures and processes", tag: "Requirements" },
+      { text: "To define access permissions for different user roles", tag: "Requirements" },
+      { text: "To manage user profiles and permissions", tag: "Requirements" }
+    ],
+    correctAnswer: "To automate standard internal procedures and processes",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure effective communication with project stakeholders?",
+    options: [
+      { text: "By organizing regular meetings and providing status updates", tag: "Collaboration with Stakeholders" },
+      { text: "By optimizing Salesforce reports and dashboards for data analysis", tag: "User Acceptance" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" }
+    ],
+    correctAnswer: "By organizing regular meetings and providing status updates",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is the purpose of a dashboard component in Salesforce?",
+    options: [
+      { text: "To display specific metrics or data visualizations on a dashboard", tag: "User Acceptance" },
+      { text: "To manage customer accounts and sales opportunities", tag: "Requirements" },
+      { text: "To create custom reports and dashboards for data analysis", tag: "User Acceptance" }
+    ],
+    correctAnswer: "To display specific metrics or data visualizations on a dashboard",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is the role of a Business Analyst in defining Salesforce data model?",
+    options: [
+      { text: "To analyze business requirements and design a scalable data architecture", tag: "Requirements" },
+      { text: "To customize page layouts and user interface elements", tag: "Requirements" },
+      { text: "To automate business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "To analyze business requirements and design a scalable data architecture",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst facilitate user training for Salesforce solutions?",
+    options: [
+      { text: "By developing comprehensive training materials and conducting workshops", tag: "Collaboration with Stakeholders" },
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By managing server infrastructure and system maintenance", tag: "Collaboration with Stakeholders" }
+    ],
+    correctAnswer: "By developing comprehensive training materials and conducting workshops",
+    tag: "Collaboration with Stakeholders"
+  },
+  {
+    question: "What is a formula field in Salesforce?",
+    options: [
+      { text: "A read-only field that displays the result of a formula expression", tag: "Requirements" },
+      { text: "A field used to store numeric data types such as integers and decimals", tag: "Data Types" },
+      { text: "A field used to categorize records and classify data in Salesforce", tag: "Data Classification" }
+    ],
+    correctAnswer: "A read-only field that displays the result of a formula expression",
+    tag: "Requirements"
+  },
+  {
+    question: "How can a Business Analyst ensure data quality in Salesforce?",
+    options: [
+      { text: "By defining validation rules and enforcing data quality standards", tag: "User Acceptance" },
+      { text: "By customizing page layouts and user interface elements", tag: "Requirements" },
+      { text: "By automating business processes using workflow rules and approvals", tag: "Requirements" }
+    ],
+    correctAnswer: "By defining validation rules and enforcing data quality standards",
+    tag: "User Acceptance"
+  },
+  {
+    question: "What is a junction object in Salesforce?",
+    options: [
+      { text: "To create many-to-many relationships between two objects", tag: "Requirements" },
+      { text: "To enforce data validation rules", tag: "User Acceptance" },
+      { text: "To define page layouts for mobile users", tag: "Requirements" }
+    ],
+    correctAnswer: "To create many-to-many relationships between two objects",
+    tag: "Requirements"
+  }
+    ];
+
+    var currentQuestionIndex = 0;
+    var correctAnswers = 0;
+    var totalQuestions = quizData.length;
+    var quizStartTime;
+    var categoryScores = {
+      "Collaboration with Stakeholders": 0,
+      "Customer Discovery": 0,
+      "User Stories": 0,
+      "Requirements": 0,
+      "Business Process Mapping": 0,
+      "User Acceptance": 0
+    };
+
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function initialize_generate() {
+      currentQuestionIndex = 0;
+      correctAnswers = 0;
+      quizData = shuffleArray(quizData);
+      showQuestion();
+      startTimer();
+      quizStartTime = new Date();
+      $(".button-click").hide();
+      $(".check-button").show();
+      $("#categoryScores").empty();
+    }
+
+    function showQuestion() {
+      var questionObj = quizData[currentQuestionIndex];
+      var question = questionObj.question;
+      var options = questionObj.options;
+
+      $("#quizContainer").show();
+      $("#question").text(question);
+
+      var dropdown = $(".dropdown");
+      dropdown.empty();
+      for (var i = 0; i < options.length; i++) {
+        dropdown.append($("<option></option>").text(options[i].text));
+      }
+      $("#result").html("");
+    }
+
+    function checkAnswer() {
+      var selectedAnswer = $(".dropdown").val();
+      var correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+      var resultDiv = $("#result");
+
+      if (selectedAnswer === correctAnswer) {
+        resultDiv.text("Correct!").addClass("correct").removeClass("incorrect");
+        correctAnswers++;
+        var tag = quizData[currentQuestionIndex].tag;
+        categoryScores[tag]++;
+      } else {
+        resultDiv.text("Incorrect! The correct answer is: " + correctAnswer).addClass("incorrect").removeClass("correct");
+      }
+
+      currentQuestionIndex++;
+      updateProgressBar();
+      if (currentQuestionIndex < totalQuestions) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function updateProgressBar() {
+      var progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+      $(".progress-bar").css("width", progress + "%");
+    }
+
+    function showResult() {
+      var resultDiv = $("#result");
+      resultDiv.text("Quiz completed!").removeClass("correct incorrect");
+      $(".button-click").hide();
+      $(".check-button").hide();
+      $(".button-click:last").show();
+      updateCategoryScores();
+    }
+
+    function updateCategoryScores() {
+      $("#categoryScores").empty();
+      for (var category in categoryScores) {
+        var percentage = ((categoryScores[category] / totalQuestions) * 100).toFixed(2);
+        $("#categoryScores").append("<div class='category-score'>" + category + ": " + percentage + "%</div>");
+      }
+    }
+
+    var timer;
+    var timeLimitPerQuestion = 30; 
+    var totalTimeLimit = 60 * 60; 
+
+    function startTimer() {
+      var timeLeft = totalTimeLimit;
+      updateTimerDisplay(timeLeft);
+
+      timer = setInterval(function() {
+        timeLeft--;
+        updateTimerDisplay(timeLeft);
+
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          checkAnswer();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay(timeLeft) {
+      var minutes = Math.floor(timeLeft / 60);
+      var seconds = timeLeft % 60;
+      $("#timer").text("Time Left: " + formatTime(minutes) + "m " + formatTime(seconds) + "s");
+    }
+
+    function formatTime(time) {
+      return time < 10 ? "0" + time : time;
+    }
+
+    function restartQuiz() {
+      $("#result").text("");
+      $(".progress-bar").css("width", "0%");
+      initialize_generate();
+    }
+
+    function previousQuestion() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion();
+        $(".button-click:last").show();
+        if (currentQuestionIndex === 0) {
+          $(".button-click:first").hide();
+        }
+      }
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIndex < totalQuestions - 1) {
+        currentQuestionIndex++;
+        showQuestion();
+        $(".button-click:first").show();
+        if (currentQuestionIndex === totalQuestions - 1) {
+          $(".button-click:last").hide();
+        }
+      }
+    }
+    function displayInspiration() {
+    const inspirationalMessages = [
+      "Believe you can and you're halfway there. - Theodore Roosevelt",
+      "The only way to do great work is to love what you do. - Steve Jobs",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+      "It does not matter how slowly you go as long as you do not stop. - Confucius",
+      "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+      "Why did the Salesforce admin bring a ladder to work? To climb the hierarchy of roles!",
+      "Don't forget: Business analysts are the bridge between business needs and technical solutions in Salesforce projects.",
+      "Why did the Salesforce consultant become a chef? Because they know how to cook up successful implementations!",
+      "Remember: Business analysts play a crucial role in gathering requirements and ensuring alignment with Salesforce capabilities.",
+      "Why did the Salesforce developer always carry a notebook? To jot down ideas for custom solutions!",
+      "Don't forget: Business analyst certifications validate your skills in Salesforce requirements gathering and solution design.",
+      "Why did the Salesforce report go on vacation? It needed some time off from generating insights!",
+      "Remember: Business analysts need strong communication skills to collaborate effectively with stakeholders and developers.",
+      "Why was the Salesforce dashboard so popular? Because it had great visualization options!",
+      "Don't forget: Business analysts must understand business processes deeply to design effective Salesforce solutions.",
+      "Why did the Salesforce admin become a lifeguard? To save data from drowning in a sea of information!",
+      "Remember: Business analysts need to stay updated with Salesforce updates and best practices to drive successful projects.",
+      "Why was the Salesforce developer so good at puzzles? They loved solving workflow challenges!",
+      "Don't forget: Business analysts should have a solid understanding of Salesforce data models and objects.",
+      "Why did the Salesforce org throw a party? To celebrate record-breaking sales and pipeline growth!",
+      "Remember: Business analysts should possess analytical skills to interpret data and drive business insights within Salesforce.",
+      "Why did the Salesforce consultant become a detective? They loved uncovering hidden insights in the data!",
+      "Don't forget: Business analysts should prioritize user adoption and ensure Salesforce solutions meet end-user needs.",
+      "Why was the Salesforce dashboard so colorful? Because it had vibrant chart options!",
+      "Remember: Business analysts should document requirements comprehensively to guide developers in building Salesforce solutions.",
+      "Why did the Salesforce admin become a superhero? To protect data from villains and ensure data integrity!",
+      "Don't forget: Business analysts should collaborate closely with Salesforce administrators and developers to ensure project success.",
+      "Why did the Salesforce report wear sunglasses? To shield itself from the glare of too much data!",
+      "Remember: Business analysts should facilitate training sessions to empower users with Salesforce knowledge.",
+      "Why did the Salesforce consultant become a magician? They loved making data disappear and reappear with custom reports!",
+      "Don't forget: Business analysts should conduct thorough user acceptance testing to validate Salesforce solutions.",
+      "Why did the Salesforce admin always have an umbrella? To protect against data leaks during cloud migrations!",
+      "Remember: Business analysts should establish clear success criteria to measure the effectiveness of Salesforce implementations.",
+      "Why was the Salesforce developer always calm? Because they had excellent error handling!",
+      "Don't forget: Business analysts should foster a culture of continuous improvement by soliciting feedback from Salesforce users.",
+      "Why did the Salesforce org throw a luau? To celebrate the launch of a new Salesforce instance in Hawaii!",
+      "Remember: Business analysts should stay informed about Salesforce product releases to leverage new features effectively.",
+      "Why did the Salesforce consultant become a race car driver? To accelerate Salesforce adoption and drive results!",
+      "Don't forget: Business analysts should facilitate workshops to brainstorm innovative solutions to business challenges.",
+      "Why was the Salesforce dashboard always the life of the party? Because it had the best data visualizations!",
+      "Remember: Business analysts should conduct stakeholder interviews to understand diverse perspectives on Salesforce requirements.",
+      "Why did the Salesforce admin bring a toolbox to work? To fix any bugs in the Salesforce instance!",
+      "Don't forget: Business analysts should maintain comprehensive documentation to support future enhancements and migrations.",
+      "Why did the Salesforce report get a standing ovation? Because it delivered actionable insights that drove revenue!",
+      "Remember: Business analysts should establish effective change management processes to minimize disruption during Salesforce implementations.",
+      "Why did the Salesforce consultant become a tour guide? To navigate clients through the Salesforce ecosystem!",
+      "Don't forget: Business analysts should leverage Salesforce Trailhead to enhance their skills and stay current with best practices.",
+      "Why was the Salesforce dashboard always the talk of the town? Because it had the most dynamic charts!",
+      "Remember: Business analysts should conduct thorough impact assessments to identify potential risks and mitigate them proactively.",
+      "Why did the Salesforce admin take up gardening? To cultivate fruitful relationships with Salesforce users!",
+      "Don't forget: Business analysts should collaborate closely with Salesforce developers to translate business requirements into technical specifications.",
+      "Why did the Salesforce report win an award? Because it provided insights that were out of this world!",
+      "Remember: Business analysts should foster a culture of data-driven decision-making within organizations using Salesforce.",
+      "Why was the Salesforce dashboard always the MVP of the team? Because it always delivered in crunch time!",
+      "Don't forget: Business analysts should conduct user training sessions to ensure smooth adoption of Salesforce solutions.",
+      "Why did the Salesforce developer become a musician? Because they could orchestrate complex integrations like a symphony!",
+      "Remember: Business analysts should conduct regular data audits to maintain data quality standards in Salesforce.",
+      "Why was the Salesforce report a hit at the office party? Because it brought data-driven insights to the dance floor!",
+      "Remember: Business analysts should establish governance processes to manage changes and updates in Salesforce effectively."    ];
+
+    const randomIndex = Math.floor(Math.random() * inspirationalMessages.length);
+    const message = inspirationalMessages[randomIndex];
+    
+    const typedMessageElement = document.getElementById('inspiration-message');
+    typedMessageElement.textContent = ''; 
+    typeMessage(message, typedMessageElement);
+  }
+
+  function typeMessage(message, element) {
+    let index = 0;
+    const typingSpeed = 45; 
+
+    function type() {
+      if (index < message.length) {
+        element.textContent += message.charAt(index);
+        index++;
+        setTimeout(type, typingSpeed);
+      }
+    }
+
+    type();
+  }
+  function celebrate() {
+  document.body.classList.toggle("queen-mode");
+
+  var button = document.getElementById("celebrate");
+  button.classList.toggle("queen-mode");
+
+  var image = document.getElementById("ruth");
+  var  celebrationSrc= "https://miro.medium.com/v2/resize:fit:2400/2*7Zy4dOimRzH5ytz524s2mQ.png"; 
+  var  originalSrc= "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXp1eGs5OHFhd3owaWtjMXZ4a2twd2RuazIxbTVqa2M3dHQ5c2M4bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pcvXBK0s1pByIDaYQR/giphy.gif"; 
+  image.src = image.src === originalSrc ? celebrationSrc : originalSrc;
+}
+
+
+
+
+
+  </script>
+</body>
+</html>
